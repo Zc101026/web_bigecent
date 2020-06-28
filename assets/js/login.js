@@ -51,6 +51,8 @@ $('#form_reg').on('submit', function (e) {
 
 // 监听登录表单的提交事件
 $('#form_login').submit(function (e) {
+    // 这里不能用箭头函数，this指向表单数据，箭头函数指向全局
+    // console.log(this)
     // 阻止默认提交行为
     e.preventDefault()
     $.ajax({
@@ -67,7 +69,7 @@ $('#form_login').submit(function (e) {
             // console.log(res.token)
             localStorage.setItem('token', res.token)
             // 跳转到后台主页
-            location.href = '/index.html'
+            location.href = './index.html'
         }
     })
 })
