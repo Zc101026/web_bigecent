@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- 导入 Layui css 样式表 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 导入 Layui css 样式表 -->
   <link rel="stylesheet" href="./assets/lib/layui/css/layui.css" />
   <!--  导入 cropper.css 样式表 -->
   <link rel="stylesheet" href="./assets/lib/cropper/cropper.css" />
   <!-- 导入 自己写的 css 样式表 -->
   <link rel="stylesheet" href="./assets/css/art_pub.css" />
 </head>
+
 <body>
   <!-- 卡片区域 -->
   <div class="layui-card">
@@ -22,7 +24,8 @@
       <div class="layui-form-item">
         <label class="layui-form-label">文章标题</label>
         <div class="layui-input-block">
-          <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+          <input type="text" name="title" required lay-verify="required" placeholder="请输入文章标题" autocomplete="off"
+            class="layui-input">
         </div>
       </div>
       <!-- 文章类型选择 -->
@@ -57,7 +60,7 @@
         <div class="layui-input-block cover-box">
           <!-- 左侧裁剪区域 -->
           <div class="cover-left">
-            <img id="image" src="./assets/images/sample2.jpg" alt="" />
+            <img id="image" src="./assets/images/laiyin.jpg" />
           </div>
           <!-- 右侧预览区域和选择封面区域 -->
           <div class="cover-right">
@@ -72,15 +75,17 @@
       </div>
       <!-- 发布区域 -->
       <div class="layui-form-item">
-          <div class="layui-input-block">
-          <button class="layui-btn" lay-submit  id="form-pub" >发布</button>
-          <button class="layui-btn layui-btn-primary" lay-submit  id="btnSave2">存为草稿</button>
-          </div>
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit id="form-pub">发布</button>
+          <button class="layui-btn layui-btn-primary" lay-submit id="btnSave2">存为草稿</button>
+        </div>
       </div>
     </form>
     <div class="layui-card-body">
     </div>
   </div>
+  <!-- /卡片区域 -->
+
   <!-- 定义模板结构，多个条目，利用列表渲染 -->
   <script type="text/html" id="tpl-cate">
     <option value="">请选择文章类别</option>
@@ -88,7 +93,9 @@
     <option value="{{$value.Id}}">{{$value.name}}</option>
     {{/each}}
   </script>
-     <!-- 导入 第三方 Layui js文件 -->
+  <!-- /定义模板结构，多个条目，利用列表渲染 -->
+
+  <!-- 导入 第三方 Layui js文件 -->
   <script src="./assets/lib/layui/layui.all.js" />
   </script>
   <!-- 导入 JQuery  js文件-->
@@ -102,10 +109,11 @@
   <!-- 导入 template-web js文件 -->
   <script src="./assets/lib/template-web.js"></script>
   <!-- 富文本 -->
-<script src="./assets/lib/tinymce/tinymce.min.js"></script>
-<script src="./assets/lib/tinymce/tinymce_setup.js"></script>
+  <script src="./assets/lib/tinymce/tinymce.min.js"></script>
+  <script src="./assets/lib/tinymce/tinymce_setup.js"></script>
   <!-- 导入自己写的 js文件 -->
   <script src="./assets/js/art_pub.js" />
   </script>
 </body>
+
 </html>

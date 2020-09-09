@@ -1,4 +1,6 @@
 $(function () {
+  const layer = layui.layer
+  const form = layui.form
     
 // 定义一个查询的参数对象，将来请求数据的时候，
 // 需要将请求参数对象提交到服务器
@@ -9,7 +11,8 @@ $(function () {
         state: '' // 文章的发布状态
         }
     
-    initTable()  
+  initTable()
+  initCate()
 
 // 获取文章列表数据的方法
       function initTable() {
@@ -48,12 +51,11 @@ $(function () {
         return n > 9 ? n : '0' + n
       }
  
-    initCate()
 // 初始化文章分类的方法
   function initCate() {
     $.ajax({
          method: 'GET',
-         url: '/my/article/cate',
+         url: '/my/article/cates',
       success: function (res) {
         if (res.status !== 0) {
              return layer.msg('获取分类数据失败！')
@@ -79,5 +81,30 @@ $(function () {
     q.state = state
     // 根据最新的筛选条件， 重新渲染表格的数据
     initTable()
-     })
+  })
+  
+    // 通过代理的形式， 为删除按钮 (btn-delete) 绑定点击事件
+    $('tbody').on('click', '.btn-delete', function () {
+      // console.log('ok')
+      let id = $(this).attr('data-id')
+      // 提示用户是否要删除
+      layer.confirm('确认删除！', {icon: 3, title:'提示'}, function(index){
+      $.ajax({
+      method: 'GET',
+      url: '/my/article/delete/' + id,
+          success: function (res) {
+          console.log(res)
+          if (res.status !== 0) {
+              return layer.msg('删除列表失败！')
+          }
+          layer.msg('删除数据成功！')
+          //  根据其索引关闭弹出框
+          layer.close(index)
+          //  重新渲染数据
+          initTable() 
+      }
+      })
+   })
+    })
+  
 })

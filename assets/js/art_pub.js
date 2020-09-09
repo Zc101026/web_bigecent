@@ -21,7 +21,7 @@ $(function() {
           // 调用模板引擎，渲染分类的下拉菜单
           var htmlStr = template('tpl-cate', res)
           $('[name=cate_id]').html(htmlStr)
-          // 一定要记得调用 form.render() 方法
+          // 一定要记得调用 form.render() 方法 更新全部
           form.render()
         }
       })
